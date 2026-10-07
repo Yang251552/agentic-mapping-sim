@@ -1,0 +1,365 @@
+{
+  "preregistration": "Held-out batch 1: M tier (Habitat + HM3D-Semantics), val split, 12 scenes x 2 tasks x 2 seeds x {llm, b1, b0, b2}; frozen configuration = arm L1 of the 2026-10-07 redesign (prompt v6, v6 rendering)",
+  "stages": [
+    "part 1 (committed before the held-out selection): the rule, the success criterion, the showcase floor, the predictions, the hashes of the prompt, the prior, every file a live run or its judgement executes (the amap package and the screening, selection and floor scripts) and of the config without its scene list",
+    "part 2 (committed after the selection, before the first held-out episode): the selected scenes and their starts (the runner refuses a start that differs), the screening hash, the config hash and summary"
+  ],
+  "config": "configs/heldout_m.json",
+  "arm_config": "configs/fresh_l1.json",
+  "config_sha256": "7bff90f41d19405666b258e4ef51c9134d4f5cd33b05c6b830f102d4037daa3e",
+  "prompt_sha256": "e3c01e9d0d6822d454a8c5a6eeb4b646ba368379d4bcfb51bec691776c4dcee7",
+  "prior_sha256": "4a6afd4204b9936763427e49d18042dd56d6a3ed66d138c61cee9cbf39488f55",
+  "code_sha256": {
+    "amap/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "amap/agent_map.py": "13b76990735a5da81df2a16f4151592f8890a794bc21607bd7831020624999ba",
+    "amap/candidates.py": "39c65f8248d31410e934c467f6023e1ca81111622492c2873c359ba25575b94a",
+    "amap/contracts.py": "02cb66e6fd08cdced5d46d6cc05fcf447868c8572b68a310aabf1e58bdd69568",
+    "amap/episode.py": "9072286970dc06c67202334f5de5c4eae0b8b1429e391f8210e7a41ccc9e8afc",
+    "amap/habitat_env.py": "64ce04569fbdfc5da5ea7c4137d99f2e29c98455cf1148bd0095030a0547e61a",
+    "amap/llm.py": "a40e14dec123d49715f7b5c475f4c12d6cac9bef993f74ea6ae9996d828ee5cd",
+    "amap/lworld.py": "0f3023932faeb5df3f90c5e20179a2cc4a954bb95a8ae4feacc82e62bcff1e80",
+    "amap/metrics.py": "a213108053426d106b54bb131e1a0c186d18a58c1575e7a825dcdb0014e2e697",
+    "amap/planner.py": "5f8451de44bca41173eadbb6925243091e400f19a4edacb97e1326c2d16c2203",
+    "amap/policies.py": "2a7a6f99daaceb644c4c4cee8f61d6d2b065f310ee7bb949035d9c2b2cd3648e",
+    "amap/run.py": "4fd2481cf4648aae2ce083fb5109bb95af830b09c89d1036999631663a135c3a",
+    "amap/sensor.py": "939a02692d8b753040e2ed50a2a9f9fe5212dc48ac3d9ed5ed963774b2a45072",
+    "amap/viz.py": "a7f413dc78ccf0695a2af5ef28baea2be76386c37cdf31ddc8f11c7226af7eff",
+    "eval/check_floor.py": "fe7e339760778c6a25ce8d5afb3c24235ea89759399772f850a85bbb9a078683",
+    "eval/screen_scenes.py": "64632b386f4931415eb647dad1ad314c963f2e37f1394f4e665084f2594cbce5",
+    "eval/select_heldout.py": "577424be0c6101760b57b3f03f99fc1821e6ab2f10bf645b3f5b295fb4f107a5"
+  },
+  "heldout": {
+    "split": "val",
+    "salt": "am-sp-m-heldout-v1:",
+    "n_scenes": 12,
+    "seeds": [
+      1001,
+      1002
+    ],
+    "area_window_m2": [
+      26.4,
+      242.5
+    ],
+    "rule": "A val scene with semantics is eligible when, for every seed in `seeds`, the metadata screening finds a start (seeded navigable point on the large island, at least start_min_dist_m = 2 m from every task-category object) whose start floor holds at least one object of every task's categories and whose navigable area lies in `area_window_m2`. Eligible scenes are ordered by sha256(salt + scene id); the first n_scenes are the held-out batch. Fewer than n_scenes eligible scenes stops the batch (no relaxing of the rule). The screening reads scene metadata only and runs no episode.",
+    "area_window_origin": "min and max of the start-floor navigable area over the 24 (scene, seed) screening rows of the 12 tuning scenes under the final tasks (26.4 and 242.5 m2). It comes from train data only; an earlier note gave 39.6 (the seed-1 minimum, written before the second tuning seed existed) and is replaced by this window before any selection under the final categories.",
+    "scenes": [
+      "00876-mv2HUxq3B53",
+      "00813-svBbv1Pavdk",
+      "00827-BAbdmeyTvMZ",
+      "00861-GLAQ4DNUx5U",
+      "00853-5cdEh9F2hJL",
+      "00808-y9hTuugGdiq",
+      "00821-eF36g7L6Z9M",
+      "00800-TEEsavR23oF",
+      "00849-a8BtkwhxdRV",
+      "00824-Dd4bFSTQ8gi",
+      "00871-VBzV5z6i1WS",
+      "00810-CrMo8WxCyVb"
+    ],
+    "starts": {
+      "00876-mv2HUxq3B53": {
+        "1001": [
+          3.702,
+          0.05,
+          16.09
+        ],
+        "1002": [
+          -9.507,
+          0.05,
+          11.739
+        ]
+      },
+      "00813-svBbv1Pavdk": {
+        "1001": [
+          11.022,
+          0.078,
+          0.326
+        ],
+        "1002": [
+          7.987,
+          0.078,
+          -1.302
+        ]
+      },
+      "00827-BAbdmeyTvMZ": {
+        "1001": [
+          -0.488,
+          0.003,
+          6.162
+        ],
+        "1002": [
+          -6.372,
+          0.195,
+          6.702
+        ]
+      },
+      "00861-GLAQ4DNUx5U": {
+        "1001": [
+          -10.085,
+          -1.593,
+          0.449
+        ],
+        "1002": [
+          -6.727,
+          -1.593,
+          6.128
+        ]
+      },
+      "00853-5cdEh9F2hJL": {
+        "1001": [
+          6.217,
+          0.105,
+          -4.024
+        ],
+        "1002": [
+          3.254,
+          0.018,
+          4.099
+        ]
+      },
+      "00808-y9hTuugGdiq": {
+        "1001": [
+          -9.949,
+          0.061,
+          2.044
+        ],
+        "1002": [
+          2.276,
+          0.061,
+          4.713
+        ]
+      },
+      "00821-eF36g7L6Z9M": {
+        "1001": [
+          3.321,
+          -3.47,
+          15.181
+        ],
+        "1002": [
+          0.871,
+          -3.47,
+          12.101
+        ]
+      },
+      "00800-TEEsavR23oF": {
+        "1001": [
+          -4.853,
+          0.163,
+          -6.66
+        ],
+        "1002": [
+          -6.17,
+          0.163,
+          -2.515
+        ]
+      },
+      "00849-a8BtkwhxdRV": {
+        "1001": [
+          -5.204,
+          1.361,
+          7.62
+        ],
+        "1002": [
+          -1.974,
+          -1.809,
+          -0.819
+        ]
+      },
+      "00824-Dd4bFSTQ8gi": {
+        "1001": [
+          -4.935,
+          0.069,
+          5.254
+        ],
+        "1002": [
+          7.74,
+          0.069,
+          2.982
+        ]
+      },
+      "00871-VBzV5z6i1WS": {
+        "1001": [
+          4.627,
+          0.047,
+          -8.736
+        ],
+        "1002": [
+          -5.908,
+          0.047,
+          -0.234
+        ]
+      },
+      "00810-CrMo8WxCyVb": {
+        "1001": [
+          -6.087,
+          0.1,
+          -0.344
+        ],
+        "1002": [
+          -4.58,
+          0.1,
+          3.421
+        ]
+      }
+    },
+    "screen_sha256": "f72cd30161a70f4bf436ee9b5342e4406063a6ecd4d458a940f178bb17dd90f2"
+  },
+  "grid": {
+    "scenes": [
+      "00876-mv2HUxq3B53",
+      "00813-svBbv1Pavdk",
+      "00827-BAbdmeyTvMZ",
+      "00861-GLAQ4DNUx5U",
+      "00853-5cdEh9F2hJL",
+      "00808-y9hTuugGdiq",
+      "00821-eF36g7L6Z9M",
+      "00800-TEEsavR23oF",
+      "00849-a8BtkwhxdRV",
+      "00824-Dd4bFSTQ8gi",
+      "00871-VBzV5z6i1WS",
+      "00810-CrMo8WxCyVb"
+    ],
+    "tasks": [
+      "T_wet",
+      "T_sleep"
+    ],
+    "seeds": [
+      1001,
+      1002
+    ],
+    "policies": [
+      "llm",
+      "b1",
+      "b0",
+      "b2"
+    ],
+    "cells": 192
+  },
+  "success": {
+    "attempt": "An attempt is a (scene, task, seed) cell. It succeeds when Q_T(llm) - Q_T(b1) >= 0.10, both read from the final state of the episodes (the step budget, or the earlier end_reason), with Q_T as defined in amap/metrics.py (code hash above). An llm episode with any fallback step does not count as a success; a cell without a finished episode for every policy is a missing cell, not a failure.",
+    "null": "Task-swap null: the llm episode run under the other task, scored against this cell's task, compared with b1 (b1 does not read the task). Also computed with b2.",
+    "stats": "Reported, not gates: one-sided Wilcoxon over scene means of Q_T(llm) - Q_T(b1); bootstrap 95% CI of that mean difference over scenes; the same for b2 and b0 against b1."
+  },
+  "showcase_floor": {
+    "F1_successes": "At least 3 successful attempts, on at least 3 distinct held-out scenes, with both tasks among the successes.",
+    "F2_task_adaptation": "At least 1 held-out scene and seed where, in the llm T_wet episode, the first confidently labelled object (confidence >= tau; log order of confident.json) whose true category is in C_wet or C_sleep has a true category in C_wet, and in the llm T_sleep episode of the same scene and seed the first such object has a true category in C_sleep. Reported alongside, not gating: S_h per scene = mean over the two seeds and the two directions of [Q_T^T(episode told T) - Q_T^T(episode told the other task)] at t = B/2 (metrics.json by_task_mid), its bootstrap 95% CI over scenes, and the number of scenes with both directions >= 0.10 out of 12; the same for b1 (0 by construction: the negative control).",
+    "F3_revisit": "At least 1 held-out llm episode with a non-fallback llm step that chose a revisit candidate while at least 1 frontier was among the candidates (n_frontiers >= 1), where over that cluster both the agent-side mean confidence and the evaluator's share of correctly labelled members (true categories, not seen by the agent) are strictly higher after the revisit than before (decisions.jsonl before / after).",
+    "F4_meta_transform": "Both meta-transform tests are listed as PASSED in the pytest -rA log kept next to the results, with no FAILED or ERROR line: the Habitat test (shuffling the true categories of unobserved object instances leaves the policy inputs and the planned route byte-identical until observed) on the first held-out scene, and the L-core test (changing unseen geometry, the outer walls, adding or removing an unobserved room leaves them byte-identical).",
+    "F5_grid": "Every cell of the grid above (scenes x tasks x seeds x policies) has exactly one finished live run; the only rerun allowed is one after an aborted_infra run (PROJECT_SPEC S7). A missing cell, a second finished run of a cell or a crash fails this item. Episodes with fallback steps are listed. A replay is not a new attempt. The report of eval/check_floor.py lists every attempt of the batch (the results JSON). The one-command, no-human-input criterion is checked by the send-line replay on a fresh instance (exit 0, results identical), not by eval/check_floor.py."
+  },
+  "gif_rule": "Candidates are (scene, seed) pairs where the llm succeeds in both tasks; take the pair whose mean gain over the two tasks, Q_T(llm) - Q_T(b1), is the median (the lower of the two middle ones for an even count; ties go to the earlier scene in the held-out order, then the lower seed). With no such pair, take the first (scene, seed) in held-out order (then lower seed) where the llm succeeds in at least one task, and label every panel with its success or failure. Two tasks side by side, same scene and seed; the panels use the logged runs, not a re-run.",
+  "predictions": {
+    "origin": "Drafted on the author's instruction on 2026-10-07 after the redesign decision boot on 12 fresh train scenes and before the held-out selection; approved by the author in chat. They replace the earlier draft (written for prompt v5), whose b2 prediction no longer held on the fresh scenes (b2 2 leads / 2 lags).",
+    "unit": "the 48 held-out attempts (12 scenes x 2 tasks x 2 seeds); lead / lag means Q_T(llm) - Q_T(b1) >= 0.10 / <= -0.10",
+    "P1": "The llm leads b1 in more attempts than it lags.",
+    "P2": "The llm succeeds in at most 3 more attempts than its own task-swap null (the llm episode run under the other task, scored on this task, against b1) succeeds: the gain is not task-specific.",
+    "P3": "The llm lags b1 in at most 6 of the 48 attempts."
+  },
+  "tuning_summary": {
+    "round_1": "12 train tuning scenes (configs/tune_scenes_m.txt) x seeds 1, 2 x 2 tasks = 48 cells, B = 120 (user decision), b1 median Q_T 0.507: S4a 2/48, S4b success-rate form 15/48 (median form not met, reported as such); evidence-gated b2 (lambda = 0.12, 9-point grid) leads / lags b1 7 / 3; llm with prompt v5 5 / 10, mean difference -0.058, scene-level 95% CI [-0.130, +0.012].",
+    "redesign": "The author judged round 1 a failure and asked for a redesign (2026-10-07). Three independent proposals and an offline replay of 159 logged decision states (prompt v6 turned 66 of 75 premature revisits into frontier choices; the categories alone 27) led to two arms, decided once on 12 fresh train scenes by a rule committed before that boot (eval/stage1_rule.json): L1 = prompt v6 + v6 rendering (the scored categories, which b2 always had, are given to the llm; revisits list only the objects their look-around settles); L2 = L1 + object-anchored inspect viewpoints.",
+    "decision_boot": "12 fresh train scenes x 2 tasks x seeds 1, 2 = 48 cells, B = 120, b1 median Q_T 0.466. L1: llm leads / lags 7 / 1, mean +0.029, scene-level 95% CI [+0.009, +0.056]; its task-swap null 6 / 0. L2: 5 / 3, task-swap 4 / 4, mean +0.008. b2: 2 / 2 (L1). Neither arm met the rule (own net minus task-swap net >= 4; leads >= 2 x task-swap leads). The stop rule froze L1 (the larger own net) for this single held-out batch and ends the redesign.",
+    "counts": "prompt versions written on train scenes: 6 (spec cap 4; versions 5 and 6 approved by the author); b2 grids: 18 points over two b2 forms; tuning scene sets: 12 tuning + 12 fresh train scenes."
+  },
+  "provenance": [
+    "The two task sentences are the planning-stage sentences, written before any result. The category set follows the sentences (wardrobe split out of cabinet before the fourteenth boot). Since the redesign the llm's task input also lists the scored categories (the table b2 has), a change made after round-1 results and recorded as such.",
+    "The train-split category prior (configs/prior_hm3d_train.json) uses 8 train scenes outside the tuning set.",
+    "Val metadata was screened once before (2026-10-06, category counts and areas only, under the earlier category set, no episode); no val episode has been run before this preregistration.",
+    "The held-out llm runs in a single process with one cache file: the cache path is part of the config hash."
+  ],
+  "config_template_sha256": "6a06baea2c9c5c45c50b99cad1d80abe785419db84134ba3f63ff63ba8b252dc",
+  "config_summary": {
+    "tasks": {
+      "T_wet": {
+        "sentence": "Map the places where someone can wash their hands or use the toilet.",
+        "categories": [
+          "sink",
+          "toilet",
+          "shower",
+          "bathtub",
+          "counter"
+        ]
+      },
+      "T_sleep": {
+        "sentence": "Map the places where someone can sleep or store clothes.",
+        "categories": [
+          "bed",
+          "chest_of_drawers",
+          "wardrobe"
+        ]
+      }
+    },
+    "seeds": [
+      1001,
+      1002
+    ],
+    "policies": [
+      "llm",
+      "b1",
+      "b0",
+      "b2"
+    ],
+    "budget": 120,
+    "tau": 0.7,
+    "sensor": {
+      "fov_deg": 90.0,
+      "range_m": 4.0,
+      "p_bins": [
+        0.9,
+        0.65,
+        0.55
+      ],
+      "confusion": "prior",
+      "prior_file": "configs/prior_hm3d_train.json",
+      "dist": "near",
+      "dist_pct": 20.0
+    },
+    "b2": {
+      "lam": 0.12
+    },
+    "llm": {
+      "model": "gpt-4.1-mini-2025-04-14",
+      "prompt": "prompts/agent_v6.txt",
+      "cache": "llm_cache/heldout_m.jsonl",
+      "max_usd": 4.5,
+      "max_tokens": 300,
+      "render": "v6"
+    },
+    "grid": {
+      "n": 400,
+      "cell": 0.2
+    },
+    "decision_every": 40,
+    "lookaround_steps": 4,
+    "candidates": {
+      "k": 8,
+      "min_frontier_cells": 2,
+      "revisit_radius": 1.5,
+      "cluster_link": 1.5,
+      "los_clearance": 0.5
+    },
+    "habitat": {
+      "res": 256,
+      "camera_height": 0.88,
+      "obstacle_band": [
+        0.15,
+        1.5
+      ],
+      "min_pixels": 50
+    },
+    "state": {
+      "max_objects": 60
+    },
+    "start_min_dist_m": 2.0,
+    "region_radius_m": 1.0,
+    "curve_every": 10
+  },
+  "amendments": [
+    {
+      "when": "2026-10-07 11:10, during the held-out batch, after 144 baseline cells and 14 llm cells had finished",
+      "what": "The 15th llm cell (00861-GLAQ4DNUx5U / T_wet / seed 1002) stopped with 'timeout: The read operation timed out', an OpenAI read timeout. On the instance's Python 3.9 socket.timeout is not a TimeoutError, so it escaped the API retry loop in amap/llm.py and the runner logged a crash and stopped the llm process (fail-fast). PROJECT_SPEC S7 classes a timeout as an infrastructure abort with backoff retries and one rerun.",
+      "change": "amap/llm.py retries OSError and http.client.HTTPException (which cover socket.timeout); eval/check_floor.py counts a crash whose error is an API timeout or dropped connection as aborted_infra, so the cell's single S7 rerun is allowed; scripts/dev/calib_steps.sh heldout_resume reruns only the llm cells without a finished row. The frozen config, prompt, prior, selected scenes and starts are unchanged; the code hashes below were refreshed for these two files before the rerun.",
+      "outcomes_seen_before_the_change": "the run log lines of the finished cells (Q_T per cell) were visible in the step output; no floor item or statistic had been computed"
+    }
+  ]
+}

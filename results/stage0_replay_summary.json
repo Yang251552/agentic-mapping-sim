@@ -1,0 +1,66 @@
+{
+ "premature": {
+  "n": 75,
+  "logged": {
+   "is_b1": "8/75",
+   "grounded": "8/75"
+  },
+  "R1": {
+   "is_b1": "34/75",
+   "frontier": "27/75",
+   "deviates_grounded": "9/75",
+   "deviates_ungrounded": "32/75",
+   "fallback": "0/75"
+  },
+  "R2": {
+   "is_b1": "65/75",
+   "frontier": "66/75",
+   "deviates_grounded": "4/75",
+   "deviates_ungrounded": "6/75",
+   "fallback": "0/75"
+  }
+ },
+ "first_div": {
+  "n": 42,
+  "logged": {
+   "is_b1": "0/42",
+   "grounded": "7/42"
+  },
+  "R1": {
+   "is_b1": "18/42",
+   "frontier": "28/42",
+   "deviates_grounded": "8/42",
+   "deviates_ungrounded": "16/42",
+   "fallback": "0/42"
+  },
+  "R2": {
+   "is_b1": "27/42",
+   "frontier": "42/42",
+   "deviates_grounded": "5/42",
+   "deviates_ungrounded": "10/42",
+   "fallback": "0/42"
+  }
+ },
+ "control": {
+  "n": 66,
+  "logged": {
+   "is_b1": "66/66",
+   "grounded": "6/66"
+  },
+  "R1": {
+   "is_b1": "59/66",
+   "frontier": "58/66",
+   "deviates_grounded": "5/66",
+   "deviates_ungrounded": "2/66",
+   "fallback": "0/66"
+  },
+  "R2": {
+   "is_b1": "62/66",
+   "frontier": "62/66",
+   "deviates_grounded": "2/66",
+   "deviates_ungrounded": "2/66",
+   "fallback": "0/66"
+  }
+ },
+ "cost_usd": 0.3311
+}

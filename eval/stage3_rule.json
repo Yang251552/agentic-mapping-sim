@@ -1,0 +1,20 @@
+{
+  "experiment": "Redesign round 3 (2026-10-07): prompt v7 + v7 rendering (arm L3) against the frozen arm L1 on the 12 fresh train scenes, written before any L3 episode",
+  "why": "Held-out batch 1 failed floor item F2 only. Diagnosis: the opening look-around confirms the first wet or sleep object identically for both tasks in 16/24 (val) and 8/24 (fresh train) scene-seeds; in the rest, prompt v6 forbade settling a counting object before any was confident, and the frontier summary could crowd counting objects out of its 3-object list. Three independent proposals (.claude/checkpoints/redesign2-*.md).",
+  "arm": "configs/fresh_l3.json = configs/fresh_l1.json with llm.prompt prompts/agent_v7.txt (one sentence of v6 replaced) and llm.render v7 (frontiers also list every [counts] object within 2 m); candidates, b1 and everything else unchanged",
+  "cells": "runs/aws/amap-dev-1791349086-14812/out/fresh12.txt x {T_wet, T_sleep} x seeds {1, 2}, llm only (48 cells); b1 and L1 are the logged runs of the same cells (runs/aws/amap-dev-1791349086-14812/out/fresh_l1), whose code paths for b1 are unchanged",
+  "definitions": {
+    "f2_pass": "a (scene, seed) where the llm T_wet episode's first confident object (confident.json order) with a true category in C_wet or C_sleep is in C_wet and the llm T_sleep episode's is in C_sleep (eval/check_floor.py first_task_object)",
+    "f2_anti": "the reverse: T_wet's first is in C_sleep and T_sleep's first is in C_wet",
+    "lead_lag": "round(Q_T(llm) - Q_T(b1), 6) >= 0.10 / <= -0.10",
+    "delta_vs_L1": "mean over the 48 cells of Q_T(L3) - Q_T(L1)"
+  },
+  "adopt_v7_if_all": {
+    "R1": "f2_pass(L3) > f2_pass(L1) and f2_pass(L3) >= f2_anti(L3)",
+    "R2": "L3 leads b1 in at least 6 cells and lags it in at most 2",
+    "R3": "delta_vs_L1 >= -0.01",
+    "R4": "no llm episode with a fallback step and all 48 cells finished"
+  },
+  "otherwise": "do not run held-out batch 2 with v6 automatically (re-running an unchanged configuration on a new batch would be sampling until a pass): stop and report to the author",
+  "stop": "this is the last prompt version; no further iteration on these scenes"
+}

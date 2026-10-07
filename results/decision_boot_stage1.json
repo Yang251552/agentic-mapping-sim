@@ -1,0 +1,195 @@
+{
+ "L1": {
+  "_b1_mean": 0.4039915416666667,
+  "b1_mean_q": 0.404,
+  "b1_median_q": 0.4657,
+  "llm": {
+   "lead": 7,
+   "lag": 1,
+   "net": 6,
+   "swap_lead": 6,
+   "swap_lag": 0,
+   "swap_net": 6,
+   "_mean_gain": 0.02917847916666667,
+   "mean_gain": 0.0292,
+   "ci95_scene": [
+    0.0086,
+    0.0558
+   ],
+   "by_task": {
+    "T_wet": [
+     3,
+     1
+    ],
+    "T_sleep": [
+     4,
+     0
+    ]
+   },
+   "cov_half": 0.0125,
+   "st_half": 0.0166,
+   "fallback_episodes": 0
+  },
+  "b2": {
+   "lead": 2,
+   "lag": 2,
+   "net": 0,
+   "swap_lead": 2,
+   "swap_lag": 2,
+   "swap_net": 0,
+   "_mean_gain": -0.002073229166666669,
+   "mean_gain": -0.0021,
+   "ci95_scene": [
+    -0.0284,
+    0.0192
+   ],
+   "by_task": {
+    "T_wet": [
+     1,
+     0
+    ],
+    "T_sleep": [
+     1,
+     2
+    ]
+   },
+   "cov_half": -0.0063,
+   "st_half": 0.0042,
+   "fallback_episodes": 0
+  },
+  "refg": {
+   "lead": 14,
+   "lag": 2,
+   "net": 12,
+   "swap_lead": 11,
+   "swap_lag": 4,
+   "swap_net": 7,
+   "_mean_gain": 0.08413383333333334,
+   "mean_gain": 0.0841,
+   "ci95_scene": [
+    0.0227,
+    0.1586
+   ],
+   "by_task": {
+    "T_wet": [
+     8,
+     0
+    ],
+    "T_sleep": [
+     6,
+     2
+    ]
+   },
+   "cov_half": 0.0581,
+   "st_half": 0.026,
+   "fallback_episodes": 0
+  },
+  "Q": {
+   "Q1": false,
+   "Q2": false,
+   "Q3": true,
+   "Q4": true,
+   "Q5": true,
+   "Q6": true
+  }
+ },
+ "L2": {
+  "_b1_mean": 0.4039915416666667,
+  "b1_mean_q": 0.404,
+  "b1_median_q": 0.4657,
+  "llm": {
+   "lead": 5,
+   "lag": 3,
+   "net": 2,
+   "swap_lead": 4,
+   "swap_lag": 4,
+   "swap_net": 0,
+   "_mean_gain": 0.0078905,
+   "mean_gain": 0.0079,
+   "ci95_scene": [
+    -0.0123,
+    0.0303
+   ],
+   "by_task": {
+    "T_wet": [
+     2,
+     2
+    ],
+    "T_sleep": [
+     3,
+     1
+    ]
+   },
+   "cov_half": 0.0044,
+   "st_half": 0.0034,
+   "fallback_episodes": 0
+  },
+  "b2": {
+   "lead": 2,
+   "lag": 1,
+   "net": 1,
+   "swap_lead": 2,
+   "swap_lag": 0,
+   "swap_net": 2,
+   "_mean_gain": 0.0005867708333333338,
+   "mean_gain": 0.0006,
+   "ci95_scene": [
+    -0.0245,
+    0.0197
+   ],
+   "by_task": {
+    "T_wet": [
+     1,
+     0
+    ],
+    "T_sleep": [
+     1,
+     1
+    ]
+   },
+   "cov_half": -0.0057,
+   "st_half": 0.0062,
+   "fallback_episodes": 0
+  },
+  "refg": {
+   "lead": 12,
+   "lag": 6,
+   "net": 6,
+   "swap_lead": 6,
+   "swap_lag": 9,
+   "swap_net": -3,
+   "_mean_gain": 0.033826166666666664,
+   "mean_gain": 0.0338,
+   "ci95_scene": [
+    -0.0271,
+    0.105
+   ],
+   "by_task": {
+    "T_wet": [
+     8,
+     4
+    ],
+    "T_sleep": [
+     4,
+     2
+    ]
+   },
+   "cov_half": 0.0213,
+   "st_half": 0.0125,
+   "fallback_episodes": 0
+  },
+  "Q": {
+   "Q1": false,
+   "Q2": false,
+   "Q3": true,
+   "Q4": true,
+   "Q5": true,
+   "Q6": true
+  }
+ },
+ "decision": {
+  "qualifying": [],
+  "pick": "L1",
+  "outcome": "no arm qualified: freeze the pick, run held-out once, report the null"
+ }
+}

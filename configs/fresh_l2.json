@@ -1,0 +1,93 @@
+{
+  "name": "fresh_l2",
+  "backend": "habitat",
+  "data": "${AMAP_HM3D}/train",
+  "out": "out/fresh_l2",
+  "scenes": [],
+  "tasks": {
+    "T_wet": {
+      "sentence": "Map the places where someone can wash their hands or use the toilet.",
+      "categories": [
+        "sink",
+        "toilet",
+        "shower",
+        "bathtub",
+        "counter"
+      ]
+    },
+    "T_sleep": {
+      "sentence": "Map the places where someone can sleep or store clothes.",
+      "categories": [
+        "bed",
+        "chest_of_drawers",
+        "wardrobe"
+      ]
+    }
+  },
+  "seeds": [
+    1,
+    2
+  ],
+  "policies": [
+    "b1",
+    "b2",
+    "refg",
+    "llm"
+  ],
+  "budget": 120,
+  "grid": {
+    "n": 400,
+    "cell": 0.2
+  },
+  "sensor": {
+    "fov_deg": 90.0,
+    "range_m": 4.0,
+    "p_bins": [
+      0.9,
+      0.65,
+      0.55
+    ],
+    "confusion": "prior",
+    "prior_file": "configs/prior_hm3d_train.json",
+    "dist": "near",
+    "dist_pct": 20.0
+  },
+  "tau": 0.7,
+  "decision_every": 40,
+  "lookaround_steps": 4,
+  "curve_every": 10,
+  "region_radius_m": 1.0,
+  "candidates": {
+    "k": 8,
+    "min_frontier_cells": 2,
+    "revisit_radius": 1.5,
+    "cluster_link": 1.5,
+    "los_clearance": 0.5,
+    "revisit_mode": "object",
+    "k_revisit": 3
+  },
+  "b2": {
+    "lam": 0.12
+  },
+  "llm": {
+    "model": "gpt-4.1-mini-2025-04-14",
+    "prompt": "prompts/agent_v6.txt",
+    "cache": "llm_cache/fresh_l2.jsonl",
+    "max_usd": 4.5,
+    "max_tokens": 300,
+    "render": "v6"
+  },
+  "habitat": {
+    "res": 256,
+    "camera_height": 0.88,
+    "obstacle_band": [
+      0.15,
+      1.5
+    ],
+    "min_pixels": 50
+  },
+  "state": {
+    "max_objects": 60
+  },
+  "start_min_dist_m": 2.0
+}

@@ -1,0 +1,27 @@
+{
+  "experiment": "Redesign decision boot (2026-10-07): two LLM arms on 12 fresh train scenes, decided by the rule below, written before any result of this boot",
+  "scenes": "F = the first 12 train scenes with semantics, in sha256('am-sp-m-tune-v1:' + scene) order, that are not among the 12 tuning scenes (configs/tune_scenes_m.txt) or the 8 prior scenes (configs/prior_hm3d_train.json) and pass the final-task screening (eval/screen_scenes.py, uniform-noise copy of the arm config) for both seeds 1 and 2; fewer than 12 among the first 40 candidates stops the boot",
+  "grid": "F x {T_wet, T_sleep} x seeds {1, 2} x {b1, b2, refg, llm}, B = 120, for each arm",
+  "arms": {
+    "L1": "configs/fresh_l1.json: prompt v6 + v6 rendering (scored categories, [counts] marks, revisits list what their look-around settles); candidates unchanged",
+    "L2": "configs/fresh_l2.json: L1 + object-anchored inspect viewpoints (revisit_mode object, k_revisit 3), shared by every policy of the arm"
+  },
+  "definitions": {
+    "gain": "round(Q_T(policy) - Q_T(b1 of the same arm), 6) per (scene, task, seed), final state of each episode",
+    "lead_lag": "lead: gain >= 0.10; lag: gain <= -0.10",
+    "swap": "the policy's episode run under the other task, scored on this task (metrics.json by_task), minus b1 of this task",
+    "net": "leads - lags"
+  },
+  "qualify": {
+    "Q1": "own net - swap net >= 4",
+    "Q2": "leads >= 6 and leads >= 2 x swap leads",
+    "Q3": "lags <= 6",
+    "Q4": "mean gain >= 0",
+    "Q5": "no llm episode with a fallback step",
+    "Q6_L2_only": "|mean Q_T(b1 of L2) - mean Q_T(b1 of L1)| <= 0.02 (the shared candidate change must not harm the baseline) and b2's task-swap leads < 15% of the cells under L2 (S4a)"
+  },
+  "pick": "among qualifying arms the larger own net; a tie goes to L1; no qualifying arm: freeze the arm with the larger own net (tie -> L1), run the held-out batch once and report the null honestly",
+  "stop": "this is the last redesign round: no further prompt version, no change of B, start rule, scene filters, noise, tau or the 0.10 threshold before the held-out batch",
+  "report_only": "per-task split, coverage and S_T halves, scene-level bootstrap 95% CI of the mean gain, b1 median Q_T (window [0.3, 0.6]), b2 and refg numbers, the same table for the 12 tuning scenes is not re-run",
+  "provenance": "prompt v6 was written before the stage 0 replay (runs/stage0/summary.json: premature revisits turned to a frontier 66/75 under v6 vs 27/75 with the categories alone) and is unchanged since"
+}

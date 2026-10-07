@@ -1,0 +1,26 @@
+{
+ "L3": {
+  "lead": 6,
+  "lag": 4,
+  "mean_gain": 0.0172,
+  "f2_pass": 1,
+  "f2_anti": 2,
+  "fallback_episodes": 0
+ },
+ "L1": {
+  "lead": 7,
+  "lag": 1,
+  "mean_gain": 0.0292,
+  "f2_pass": 2,
+  "f2_anti": 2,
+  "fallback_episodes": 0
+ },
+ "delta_vs_L1": -0.012,
+ "R": {
+  "R1": false,
+  "R2": false,
+  "R3": false,
+  "R4": true
+ },
+ "decision": "do not adopt v7: stop and report to the author"
+}
